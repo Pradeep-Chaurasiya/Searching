@@ -1,0 +1,29 @@
+public class Solution {
+    public int solve(int A) {
+        
+        // long root = -1+(long)Math.sqrt(1+1L*8*A); // root = (-b+Math.sqrt(b^2-4ac))/2a where a=b=1; c = 2*A;
+        //                                         // n(n+1)= 2A; 
+        // long ans = root/2;
+        // return (int)ans;
+        if(A==0) return 0;
+        return binarySearch(A, 1, A);
+    
+    }
+    
+    int binarySearch(int B, int left, int right){
+        while(left<=right){
+            int mid = (left+right)/2;
+            int add = mid*(mid+1)/2;
+            if(add == B) return mid;
+            if(add<B){
+                left = mid+1;
+                if(left>right && mid<B){
+                return left-1;
+                }
+            }
+            
+            if(add>B) right = mid-1;
+        }
+        return right;
+    }
+}
